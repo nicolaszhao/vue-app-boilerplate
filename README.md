@@ -1,4 +1,4 @@
-# Vue Spa Boilerplate
+# {{title}}
 
 {{description}}
 
@@ -6,23 +6,18 @@
 
 * [x] 支持 ES6 ~ ES8, 以及部分 ES Stage-3 语法和特性
 * [x] [sanitize.css](https://github.com/csstools/sanitize.css) - 面向移动开发的默认样式重置
-* [x] SASS + [CSS Modules](https://github.com/css-modules/css-modules)
-* [x] Redux + [Redux-Actions](https://redux-actions.js.org/) + [Redus-Saga](https://redux-saga-in-chinese.js.org/) - 应用数据管理
-* [x] React-Router v4+
+* [x] SASS
+* [x] Vue + Vuex + Vue-Router
 * [x] [axios](https://github.com/axios/axios) - 最流行的 Ajax 数据处理（内部使用 [tote-box](https://github.com/nicolaszhao/tote-box) 封装成 `axiosRequest`）
 * [x] [mockjs](http://mockjs.com/) - 开发环境智能 mock API 数据
-* [x] px2rem + flexible.js 修复版（需单独启用，[见底下的说明](#启用-px2rem--flexiblejs)） ，参考 [postcss-px2rem](https://www.npmjs.com/package/postcss-px2rem), [px2rem](https://www.npmjs.com/package/px2rem)
+* [x] px2rem + flexible.js 修复版（需单独开启，[见底下的说明](#启用-px2rem--flexiblejs)） ，参考 [postcss-px2rem](https://www.npmjs.com/package/postcss-px2rem), [px2rem](https://www.npmjs.com/package/px2rem)
 * [x] Autoprefixer
-* [x] [react-hot-loader](https://www.npmjs.com/package/react-hot-loader)
 * [x] webpack v4.0+（已用 [webpack-config-zero](https://www.npmjs.com/package/webpack-config-zero) 封装成配置器）
 * [x] 代码提交 ESLint 自动审查
 
 ### 其他已包含的主要模块
 
 * tote-box
-* react-tote-box
-* react-transition-group
-* react-loadable
 * [classnames](https://www.npmjs.com/package/classnames)
 * [mobile-detect](https://www.npmjs.com/package/mobile-detect)
 * [urijs](https://www.npmjs.com/package/urijs)
@@ -89,11 +84,13 @@ ie 11
 
 ### 启用 `px2rem` + `flexible.js`
 
-**除非项目元素复杂度和像素精准化要求较高，否则不建议开启该功能，根据以下原则可能更灵活：**
+**除非项目元素复杂度和像素精准度要求较高，否则不建议开启该功能，根据以下原则可能更灵活：**
 
 * font-size 定义为 rem，相对 :root 做缩放
 * 边框等定义为 px，如有缩放要求请参照第 3 条原则
 * 其他属性定义为 em，相对于当前元素的 font-size
+
+#### 配置
 
 修改 `postcss.config.js`:
 
