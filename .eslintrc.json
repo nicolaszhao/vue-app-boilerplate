@@ -1,4 +1,9 @@
 {
-  "parser": "babel-eslint",
-  "extends": "nz"
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "extends": [
+    "nz",
+    "plugin:vue/recommended"
+  ]
 }
