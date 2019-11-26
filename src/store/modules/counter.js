@@ -1,12 +1,12 @@
 export default {
   namespaced: true,
   state: {
-    count: 0
+    count: 0,
   },
   mutations: {
     increment(state, payload) {
       state.count += payload.amount;
-    }
+    },
   },
   actions: {
     increment({ commit }, amount) {
@@ -14,6 +14,6 @@ export default {
     },
     decrement({ commit }, amount) {
       commit('increment', { amount: -amount });
-    }
-  }
+    },
+  },
 };

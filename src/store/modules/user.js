@@ -6,11 +6,11 @@ export default {
     id: 0,
     fetching: false,
     data: null,
-    error: null
+    error: null,
   },
   mutations: {
     fetch(state, payload) {
-      state.id = payload.id,
+      state.id = payload.id;
       state.fetching = true;
     },
     update(state, payload) {
@@ -21,7 +21,7 @@ export default {
     throw(state, payload) {
       state.fetching = false;
       state.error = payload;
-    }
+    },
   },
   actions: {
     async fetch({ commit }, id) {
@@ -34,6 +34,6 @@ export default {
       } catch (error) {
         commit('throw', error);
       }
-    }
-  }
+    },
+  },
 };

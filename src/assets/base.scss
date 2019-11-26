@@ -44,22 +44,3 @@ button {
   user-select: none;
   background: none;
 }
-
-.button {
-  padding: .5em 1em;
-  border: solid 1px rgba(0, 0, 0, .3);
-  border-radius: .2em;
-  text-shadow: 0 1px 0 hsla(0, 0%, 100%, .8);
-  transition: .4s;
-  background: rgba(0, 0, 0, .2) linear-gradient(hsla(0, 0%, 100%, .3) 50%, transparent 0);
-
-  &:active {
-    background-color: rgba(0, 0, 0, .4);
-  }
-}
-
-.input {
-  padding: .5em;
-  border: solid 1px rgba(0, 0, 0, .3);
-  border-radius: .2em;
-}

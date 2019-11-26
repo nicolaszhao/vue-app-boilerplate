@@ -4,10 +4,13 @@
       <div class="modal-container">
         <header class="modal-header">
           <h1>{{ title }}</h1>
-          <button class="modal-close-button" @click="$emit('close')"></button>
+          <button
+            class="modal-close-button"
+            @click="$emit('close')"
+          />
         </header>
         <section class="modal-content">
-          <slot></slot>
+          <slot />
         </section>
       </div>
     </div>
@@ -16,7 +19,9 @@
 
 <script>
 export default {
-  props: ['title']
+  props: {
+    title: String,
+  },
 };
 </script>
 
@@ -47,30 +52,34 @@ export default {
     justify-content: space-between;
     margin-bottom: 1em;
     position: relative;
+
+    h1 {
+      margin: 0;
+    }
   }
 
   &-close-button {
     width: 1.2em;
     height: 1.2em;
     position: relative;
-  
+
     &:before,
     &:after {
       content: "";
       display: block;
       width: 70%;
-      height: 2px; /* px */
+      height: 2px;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0) rotate(45deg);
       background: rgba(0, 0, 0, .3);
     }
-  
+
     &:after {
       transform: translate3d(-50%, -50%, 0) rotate(-45deg);
     }
-  
+
     &:active:before,
     &:active:after {
       background: rgba(0, 0, 0, .6);
@@ -103,4 +112,3 @@ export default {
   }
 }
 </style>
-

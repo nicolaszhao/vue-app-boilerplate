@@ -1,12 +1,12 @@
-import './pages/polyfills';
 import './configs/public-path';
+import './assets/base.scss';
+
 import Vue from 'vue';
-import App from './pages/App.vue';
-import router from './pages/router';
-import store from './pages/store';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 
 new Vue({
-  el: '#app',
   router,
   store,
   render: (h) => h(App),

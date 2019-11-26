@@ -1,29 +1,29 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import counter from './Counter/module';
-import user from './User/module';
+import user from './modules/user';
+import counter from './modules/counter';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
+    user,
     counter,
-    user
-  }
+  },
 });
 
 if (module.hot) {
   module.hot.accept([
-    './Counter/module',
-    './User/module'
+    './modules/user',
+    './modules/counter',
   ], () => {
     store.hotUpdate({
       modules: {
+        user,
         counter,
-        user
-      }
+      },
     });
   });
 }
 
-export default  store;
+export default store;
