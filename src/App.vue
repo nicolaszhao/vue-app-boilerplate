@@ -8,7 +8,7 @@
           :key="item.path"
         >
           <router-link
-            active-class="nav-active"
+            active-class="active"
             :to="item.path"
             :exact="item.path === '/'"
           >
@@ -71,7 +71,7 @@ h1, h2, h3 {
     }
   }
 
-  &-active {
+  .active {
     text-decoration: underline dotted #ccc;
     color: #0cf;
   }
