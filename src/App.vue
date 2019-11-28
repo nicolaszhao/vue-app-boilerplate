@@ -94,5 +94,9 @@ export default {
   padding: .4em .8em;
   background: linear-gradient(transparent 50%, rgba(0, 0, 0, .1) 50%);
   text-shadow: 0 1px 0 #fff;
+
+  &:active {
+    background-color: rgba(0, 0, 0, .4);
+  }
 }
 </style>
