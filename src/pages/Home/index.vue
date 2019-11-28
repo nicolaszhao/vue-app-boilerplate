@@ -1,29 +1,32 @@
 <template>
-  <div class="home">
+  <div :class="$style.container">
     <h2>Home</h2>
-    <section class="profile">
+    <section :class="$style.profile">
       <h3>User Profile</h3>
-      <ul v-if="data">
+      <ul>
         <li
           v-for="(value, name) in data"
           :key="value"
         >
-          <strong>{{ name }}</strong>
+          <strong>{{ name }}:</strong>
           <span>{{ value }}</span>
         </li>
       </ul>
-      <p>
+      <footer :class="$style['profile-footer']">
         <button
           class="button"
-          @click="fetch(id)"
+          @click="fetch()"
         >
           Refresh
         </button>
-      </p>
+      </footer>
     </section>
-    <section class="counter">
+    <section :class="$style.counter">
       <h3>Counter</h3>
-      <div class="counter-controls">
+      <div :class="$style['counter-controls']">
+        <label>
+          Amount:
+        </label>
         <input
           v-model="amount"
           class="input"
@@ -34,7 +37,7 @@
         >
           -
         </button>
-        <span class="counter-value">{{ count }}</span>
+        <span :class="$style['counter-value']">{{ count }}</span>
         <button
           class="button"
           @click="increment(+amount)"
@@ -49,7 +52,7 @@
       title="Error"
       @close="closeModal"
     >
-      <p class="error">
+      <p :class="$style.error">
         {{ error.message }}
       </p>
     </Modal>
@@ -71,9 +74,6 @@ export default {
     amount: 1,
   }),
   computed: {
-    id() {
-      return this.count;
-    },
     ...mapState('user', ['fetching', 'data', 'error']),
     ...mapState('counter', ['count']),
   },
@@ -100,20 +100,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
+.container {
+  padding: .8em;
+}
+
 .profile {
-  ul {
-    margin-bottom: 1em;
+  li strong {
+    display: block;
+    margin: .8em 0 .4em;
+    font-weight: bold;
   }
 
-  li strong {
-    display: inline-block;
-    min-width: 5em;
-    font-weight: bold;
-
-    &::after {
-      content: ':';
-    }
+  &-footer {
+    margin-top: 1em;
   }
 }
 
@@ -121,9 +121,15 @@ export default {
   &-controls {
     display: flex;
 
-    .input {
-      width: 5em;
+    label {
+      margin-right: .4em;
+      padding: .2em 0;
+    }
+
+    :global(.input) {
+      width: 4em;
       margin-right: 2em;
+      text-align: center;
     }
   }
 
@@ -138,25 +144,8 @@ export default {
 }
 
 .error {
-  color: #f00;
-}
-
-.button {
-  padding: .5em 1em;
-  border: solid 1px rgba(0, 0, 0, .3);
-  border-radius: .2em;
-  text-shadow: 0 1px 0 hsla(0, 0%, 100%, .8);
-  transition: .4s;
-  background: rgba(0, 0, 0, .2) linear-gradient(hsla(0, 0%, 100%, .3) 50%, transparent 0);
-
-  &:active {
-    background-color: rgba(0, 0, 0, .4);
-  }
-}
-
-.input {
   padding: .5em;
-  border: solid 1px rgba(0, 0, 0, .3);
-  border-radius: .2em;
+  background: #fcfabe;
+  color: #f00;
 }
 </style>

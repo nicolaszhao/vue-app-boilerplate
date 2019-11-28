@@ -3,14 +3,12 @@ import * as api from '../../api';
 export default {
   namespaced: true,
   state: {
-    id: 0,
     fetching: false,
-    data: null,
+    data: {},
     error: null,
   },
   mutations: {
-    fetch(state, payload) {
-      state.id = payload.id;
+    fetch(state) {
       state.fetching = true;
     },
     update(state, payload) {

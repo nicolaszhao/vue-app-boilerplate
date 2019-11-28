@@ -17,7 +17,9 @@
         </li>
       </ul>
     </nav>
-    <router-view />
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -47,16 +49,19 @@ export default {
 
 <style lang="scss">
 #app {
-  padding: 0.8em;
+  padding: 1em;
+
+  h1, h2, h3 {
+    margin: .8em 0 .4em;
+  }
 
   h1 {
-    margin-top: 0;
     text-align: center;
   }
 }
 
-h1, h2, h3 {
-  margin: .8em 0 .6em;
+.content {
+  padding: .8em;
 }
 
 .nav {
@@ -64,7 +69,7 @@ h1, h2, h3 {
 
   li {
     display: inline-block;
-    padding: 0 .5em;
+    padding: 0 .8em;
 
     &:not(:last-child) {
       border-right: solid 1px rgba(0, 0, 0, .2);
@@ -75,5 +80,19 @@ h1, h2, h3 {
     text-decoration: underline dotted #ccc;
     color: #0cf;
   }
+}
+
+.input {
+  padding: .4em;
+  border: solid 1px rgba(0, 0, 0, .3);
+  border-radius: .2em;
+}
+
+.button {
+  border: solid 1px rgba(0, 0, 0, .4);
+  border-radius: .2em;
+  padding: .4em .8em;
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, .1) 50%);
+  text-shadow: 0 1px 0 #fff;
 }
 </style>
