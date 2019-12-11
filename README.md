@@ -1,162 +1,163 @@
-# {{title}}
+# {{name}}
 
-{{description}}
+## 起步
 
-## 内置功能
+### 安装/更新项目依赖
 
-* [x] 支持 ES6 ~ ES8, 以及部分 ES Stage-3 语法和特性
-* [x] [sanitize.css](https://github.com/csstools/sanitize.css) - 面向移动开发的默认样式重置
-* [x] SASS
-* [x] Vue + Vuex + Vue-Router
-* [x] [axios](https://github.com/axios/axios) - 最流行的 Ajax 数据处理（内部使用 [tote-box](https://github.com/nicolaszhao/tote-box) 封装成 `axiosRequest`）
-* [x] [mockjs](http://mockjs.com/) - 开发环境智能 mock API 数据
-* [x] px2rem + flexible.js 修复版（需单独开启，[见底下的说明](#启用-px2rem--flexiblejs)） ，参考 [postcss-px2rem](https://www.npmjs.com/package/postcss-px2rem), [px2rem](https://www.npmjs.com/package/px2rem)
-* [x] Autoprefixer
-* [x] webpack v4.0+（已用 [webpack-config-zero](https://www.npmjs.com/package/webpack-config-zero) 封装成配置器）
-* [x] 代码提交 ESLint 自动审查
-
-### 其他已包含的主要模块
-
-* tote-box
-* [classnames](https://www.npmjs.com/package/classnames)
-* [mobile-detect](https://www.npmjs.com/package/mobile-detect)
-* [urijs](https://www.npmjs.com/package/urijs)
-* lodash
-
-## 快速上手
-
-### 启动开发环境
-
-```shell
-# http://localhost:3003/
-npm start
+```
+npm install
 ```
 
-### 生产环境构建
+### 执行可用的 NPM SCRIPTS
 
-```shell
-npm run build
-```
+#### `npm start`
 
-## 目录结构
+启动一个用于开发环境的服务，在浏览器中打开 [http://localhost:3003/](http://localhost:3003/)
 
-```shell
-.
-├── dist
-│   └── // 资源构建输出
-├── lib
-│   └── // 非模块文件
-├── src
-│   ├── api
-│   │   └── // 后端接口
-│   ├── components
-│   │   └── // 共享组件
-│   ├── config
-│   │   └── // 运行时配置
-│   ├── constants
-│   │   └── // 共享常量
-│   ├── containers
-│   │   └── // 容器组建
-│   ├── modules
-│   │   └── // 业务模块
-│   ├── styles
-│   │   └── // global 样式（开启 CSS Modules 时，该目录下 css 不需要声明 global:）
-│   └── utils
-│       └── // 工具模块，不参杂任何业务（可日后抽离到业务库的）
-└── webpack.config.js
-```
+#### `npm run build`
 
-## 修改默认配置
+构建/打包代码为生产环境用的静态资源
 
-### 编译转换目标浏览器的代码
+### 自定义配置
 
-修改 `.browserslistrc`:
+查看 [Vue CLI 配置](https://cli.vuejs.org/zh/config/#%E5%85%A8%E5%B1%80-cli-%E9%85%8D%E7%BD%AE)
 
-```shell
-# Browsers that we support
+## 内置能力
 
-> 1%
-last 5 versions
-ie 11
-```
+* [x] 支持 [ES6+](http://es6.ruanyifeng.com/) 语法和原生 API
+* [x] [autoprefixer](https://github.com/postcss/autoprefixer)
+* [x] [sanitize.css](https://github.com/csstools/sanitize.css) - 面向移动开发的默认样式重置，可根据 [browserslist](https://github.com/browserslist/browserslist) 优化
+* [x] [axios](https://github.com/axios/axios) - 最流行的 Ajax 数据处理（已封装为高级方法 [@totebox/ajax](https://github.com/nicolaszhao/totebox/tree/master/packages/ajax)）
+* [x] [mockjs](http://mockjs.com/) - 超智能的超前开发阶段的后端 API mock 数据
+* [x] [.env](https://github.com/motdotla/dotenv#readme) - 灵活方便的环境变量配置
+* [x] [ESLint](https://cn.eslint.org/) - [nicolaz](https://github.com/nicolaszhao/eslint-config-nicolaz) 风格的 JavaScript 代码审查
+* [x] [lint-staged](https://github.com/okonet/lint-staged) - git commit 阶段自动检测变更代码的 ESLint
 
-可参考：[browserslist](https://github.com/ai/browserslist)
+## 功能调校
 
-### 启用 `px2rem` + `flexible.js`
+### Babel
 
-**除非项目元素复杂度和像素精准度要求较高，否则不建议开启该功能，根据以下原则可能更灵活：**
-
-* font-size 定义为 rem，相对 :root 做缩放
-* 边框等定义为 px，如有缩放要求请参照第 3 条原则
-* 其他属性定义为 em，相对于当前元素的 font-size
-
-#### 配置
-
-修改 `postcss.config.js`:
+`.babelrc`:
 
 ```diff
-+ const px2rem = require('postcss-px2rem');
-
-  module.exports = {
-    plugins: [
--     require('autoprefixer')
-+     require('autoprefixer'),
-+     px2rem({
-+       remUnit: 75 // remUnit 根据设计稿情况设置
-+     })
-    ]
-  };
+{
+  "presets": [
+    "@vue/cli-plugin-babel/preset"
+  ],
++ "plugins": [...]
+}
 ```
 
-修改 `src/containers/[PageName]/index.html`：
+### ESLint
+
+`.eslintrc`:
 
 ```diff
-  <!DOCTYPE html>
-  <html lang="zh-Hans">
+{
+  "extends": [
+    "nicolaz-base",
+    "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
++ "rules": { ... }
+}
+```
 
-  <head>
-    <meta charset="UTF-8">
--   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <title>...</title>
-+  	<script src="lib/flexible.min.js"></script>
-  </head>
+### Browserslist
 
+`package.json`:
+
+```diff
+{
   ...
-
-  </html>
-
+  "browserslist": [
++   ...
+  ]
+}
 ```
 
-删除  `src/styles/base.scss` 中 `:root`  的基准字号：
+### CSS Reset
+
+`./src/assets/base.scss`:
 
 ```diff
-- :root {
--   font-size: 0.875em;
-- }
+- @import "sanitize.css";
++ @import "normalize.css";
 ```
 
-使用 px2rem 如何在 css 中定义元素尺寸请参考：[postcss-px2rem](https://www.npmjs.com/package/postcss-px2rem) 
+### Native Fetch API
 
-### 修改 webpack.config.js 配置
+1、更换 `@totebox/ajax` 为 `@totebox/http`:
 
-```js
-const zeroConfig = require('webpack-config-zero');
-
-module.exports = zeroConfig({
-  /* your options */
-});
+```
+npm uninstall @totebox/ajax
+npm i @totebox/http
 ```
 
-或者：
+2、在 `./src/index.js` 的最顶部:
 
-```js
-const zeroConfig = require('webpack-config-zero');
-const webpackMerge = require('webpack-merge');
-
-module.exports = webpackMerge(
-  zeroConfig( /* options */ ), 
-  { /* webpack config options */ }
-);
+```diff
++ import 'whatwg-fetch';
 ```
 
-参考：[webpack-config-zero](https://www.npmjs.com/package/webpack-config-zero)
+3、`./src/api/index.js`:
+
+```diff
+- import Ajax from '@totebox/ajax';
++ import Ajax from '@totebox/http';
+```
+
+4、根据 [@totebox/http](https://github.com/nicolaszhao/totebox/tree/master/packages/http) 文档调整全局请求配置
+
+### 环境变量
+
+你可以创建 `.env`、`.env.local`、`.env.[environment]`，或 `.env.[environment].local` 文件来添加环境变量。参考 [vue-cli 的环境变量和模式](https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F)
+
+## `./src` 目录规范
+
+```
+./src
+├── api
+├── assets
+├── components
+├── utils
+├── constants
+├── configs
+├── pages
+└── main.js
+
+```
+
+### api
+
+后端接口请求模块
+
+### assets
+
+全局资源：图片、样式等
+
+### components
+
+通用组件
+
+### utils
+
+通用工具函数等
+
+### constants
+
+通用常量
+
+### configs
+
+全局配置
+
+### pages
+
+页面模块，或路由组件
+
+### `main.js`
+
+入口文件，`polyfill` 和 全局样式等在此处导入
