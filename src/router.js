@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from './pages/Home/index.vue';
-import NoMatch from './pages/NoMatch/index.vue';
+import Home from './pages/Home';
+import NoMatch from './pages/NoMatch';
 
 Vue.use(VueRouter);
 
@@ -14,7 +14,7 @@ export const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import('./pages/About/index.vue'),
+    component: () => import('./pages/About'),
   },
   {
     path: '*',

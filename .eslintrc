@@ -1,9 +1,36 @@
 {
   "extends": [
-    "nicolaz-base",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
+    "@vue/airbnb",
+    "nicolaz-base"
   ],
   "parserOptions": {
-    "parser": "babel-eslint"
+    "parser": "@babel/eslint-parser",
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "vue": "never"
+      }
+    ],
+    "import/no-cycle": "off",
+    "vue/max-attributes-per-line": [
+      "warn",
+      {
+        "singleline": 2,
+        "multiline": {
+          "max": 1,
+          "allowFirstLine": false
+        }
+      }
+    ]
   }
 }

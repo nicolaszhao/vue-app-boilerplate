@@ -15,28 +15,29 @@
     "src/**/*.{js,vue}": "eslint"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.0.5",
-    "@vue/cli-service": "^4.0.5",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.0.0",
-    "eslint-config-nicolaz-base": "^0.5.3",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-vue": "^5.1.0",
+    "@babel/eslint-parser": "^7.13.8",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
+    "@vue/eslint-config-airbnb": "^5.3.0",
+    "eslint": "^7.21.0",
+    "eslint-config-nicolaz-base": "^0.7.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.7.0",
     "husky": "^3.0.0",
     "lint-staged": "^9.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^5.0.0",
     "postcss-import": "^12.0.1",
-    "postcss-normalize": "^8.0.1",
+    "postcss-normalize": "^9.0.0",
     "postcss-preset-env": "^6.7.0",
-    "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "sass-loader": "^10.1.1",
+    "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
-    "@totebox/ajax": "^0.13.2",
+    "@totebox/ajax": "^0.14.0",
     "mockjs": "^1.0.0",
-    "vue": "^2.5.22",
-    "vue-router": "^3.0.2",
-    "vuex": "^3.1.0"
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "browserslist": [
     "last 2 versions"

@@ -33,7 +33,7 @@ export default {
   computed: {
     menus() {
       return this.routes
-        .filter((route) => route.name)
+        .filter(route => route.name)
         .map(({ path, name }) => ({
           name: name.charAt(0).toUpperCase() + name.slice(1),
           path,

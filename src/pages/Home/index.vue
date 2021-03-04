@@ -61,8 +61,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import Loading from '../../components/Loading/index.vue';
-import Modal from '../../components/Modal/index.vue';
+import Loading from '@/components/Loading';
+import Modal from '@/components/Modal';
 
 export default {
   components: {
