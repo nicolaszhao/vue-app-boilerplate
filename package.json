@@ -17,7 +17,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.8",
     "@vue/cli-plugin-babel": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "eslint": "^7.21.0",
     "eslint-config-nicolaz-base": "^0.7.0",
